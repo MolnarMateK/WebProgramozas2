@@ -30,10 +30,12 @@ app.use((req, res, next) => {
 
 // ÚTVONALAK BEÖLTÉSE
 const pageRoutes = require('./routes/pages');
-const authRoutes = require('./routes/auth'); // Ennek már be kell lennie töltve
+const authRoutes = require('./routes/auth');
+const crudRoutes = require('./routes/crud'); // <-- Ez az új sor
 
 app.use('/', pageRoutes);
-app.use('/', authRoutes); // Ennek is
+app.use('/', authRoutes);
+app.use('/', crudRoutes); // <-- Ez az új sor
 
 
 app.listen(PORT, () => {
@@ -41,3 +43,4 @@ app.listen(PORT, () => {
     console.log(`A tanári Excel alapján (HV1WUV) a szerveren ezen a porton kell futnia: ${PORT}`);
     console.log(`És ezen az útvonalon lesz elérhető: http://143.47.98.96/app026`);
 });
+

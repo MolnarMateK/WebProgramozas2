@@ -1,0 +1,53 @@
+<%- include('partials/header') %>
+
+<h2>Nézők Kezelése (CRUD)</h2>
+<p>A <code>nezo</code> tábla adatai. Ez a CRUD menüpont "Read" (Olvasás) funkciója.</p>
+
+<a href="/crud/add" style="display: block; margin: 20px 0; font-weight: bold; font-size: 1.1em;">
+    Új néző hozzáadása
+</a>
+
+<style>
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    th { background-color: #f2f2f2; }
+    .edit-link { color: green; }
+    .delete-link { color: red; }
+</style>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Név</th>
+            <th>Férfi?</th>
+            <th>Bérletes?</th>
+            <th>Műveletek</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (spectators.length > 0) { %>
+            <% spectators.forEach(nezo => { %>
+                <tr>
+                    <td><%= nezo.id %></td>
+                    <td><%= nezo.nev %></td>
+                    <td><%= nezo.ferfi ? 'Igen' : 'Nem' %></td>
+                    <td><%= nezo.berletes ? 'Igen' : 'Nem' %></td>
+                    <td>
+                        <a href="/crud/edit/<%= nezo.id %>" class="edit-link">Edit</a>
+
+                        <a href="/crud/delete/<%= nezo.id %>" class="delete-link" onclick="return confirm('Biztosan törölni szeretné ezt a nézőt?');">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            <% }) %>
+        <% } else { %>
+            <tr>
+                <td colspan="5">Nincsenek nézők az adatbázisban.</td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<h2>Új Néző Hozzáadása (Create)</h2>
+
+<form action="/crud/add" method="POST">
+    <div>
+        <label for="nev">Név:</label>
+        <input type="text" id="nev" name="nev" required>
+    </div>
+    <div>
+        <label for="ferfi">Férfi:</label>
+        <select id="ferfi" name="ferfi">
+            <option value="1">Igen</option>
+            <option value="0">Nem</option>
+        </select>
+    </div>
+    <div>
+        <label for="berletes">Bérletes:</label>
+        <select id="berletes" name="berletes">
+            <option value="1">Igen</option>
+            <option value="0">Nem</option>
+        </select>
+    </div>
+    <button type="submit">Hozzáadás</button>
+</form>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<h2>Néző Módosítása (Update)</h2>
+
+<form action="/crud/edit/<%= nezo.id %>" method="POST">
+    <div>
+        <label for="nev">Név:</label>
+        <input type="text" id="nev" name="nev" value="<%= nezo.nev %>" required>
+    </div>
+    <div>
+        <label for="ferfi">Férfi:</label>
+        <select id="ferfi" name="ferfi">
+            <option value="1" <%= (nezo.ferfi == 1) ? 'selected' : '' %>>Igen</option>
+            <option value="0" <%= (nezo.ferfi == 0) ? 'selected' : '' %>>Nem</option>
+        </select>
+    </div>
+    <div>
+        <label for="berletes">Bérletes:</label>
+        <select id="berletes" name="berletes">
+            <option value="1" <%= (nezo.berletes == 1) ? 'selected' : '' %>>Igen</option>
+            <option value="0" <%= (nezo.berletes == 0) ? 'selected' : '' %>>Nem</option>
+        </select>
+    </div>
+    <button type="submit">Módosítás</button>
+</form>
+
+<%- include('partials/footer') %>
