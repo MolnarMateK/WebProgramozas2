@@ -30,10 +30,10 @@ app.use((req, res, next) => {
 
 // ÚTVONALAK BEÖLTÉSE
 const pageRoutes = require('./routes/pages');
-// const authRoutes = require('./routes/auth'); // Ezt később kapcsoljuk be
+const authRoutes = require('./routes/auth'); // Ennek már be kell lennie töltve
 
 app.use('/', pageRoutes);
-// app.use('/', authRoutes);
+app.use('/', authRoutes); // Ennek is
 
 
 app.listen(PORT, () => {
