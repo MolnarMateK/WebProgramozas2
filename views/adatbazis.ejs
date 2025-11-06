@@ -1,0 +1,42 @@
+<%- include('partials/header') %>
+
+<h2>Adatbázis Menü (3 Táblás Lekérdezés)</h2>
+<p>
+    Az alábbi táblázat a <code>nezo</code>, <code>belepes</code> és <code>meccs</code> 
+    táblák összekapcsolásával (JOIN) jött létre.
+</p>
+
+<style>
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    th { background-color: #f2f2f2; }
+</style>
+
+<table>
+    <thead>
+        <tr>
+            <th>Néző Neve</th>
+            <th>Meccs Típusa</th>
+            <th>Meccs Dátuma</th>
+            <th>Belépés Ideje</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (results.length > 0) { %>
+            <% results.forEach(row => { %>
+                <tr>
+                    <td><%= row.nezoNeve %></td>
+                    <td><%= row.meccsTipusa %></td>
+                    <td><%= new Date(row.meccsDatuma).toLocaleDateString('hu-HU') %></td>
+                    <td><%= row.belepesIdopontja %></td>
+                </tr>
+            <% }) %>
+        <% } else { %>
+            <tr>
+                <td colspan="4">Nincsenek megjeleníthető adatok. (Tölts fel adatokat a 'nezo', 'meccs' és 'belepes' táblákba!)</td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+
+<%- include('partials/footer') %>

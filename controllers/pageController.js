@@ -7,13 +7,39 @@ exports.showIndex = (req, res) => {
     });
 };
 
-// Adatbázis menü (egyelőre dummy)
-exports.showAdatbazis = (req, res) => {
-    // Később ide jön a 3 táblás lekérdezés
-    res.send('Adatbázis Menü - Folyamatban...');
+// --- ADATBÁZIS MENÜ (3 TÁBLÁS JOIN) ---
+exports.showAdatbazis = async (req, res) => {
+    try {
+        const query = `
+            SELECT 
+                nezo.nev AS nezoNeve,
+                meccs.tipus AS meccsTipusa,
+                meccs.datum AS meccsDatuma,
+                belepes.idopont AS belepesIdopontja
+            FROM 
+                belepes
+            JOIN 
+                nezo ON belepes.nezoid = nezo.id
+            JOIN 
+                meccs ON belepes.meccsid = meccs.id
+            ORDER BY 
+                meccs.datum DESC, belepes.idopont DESC;
+        `;
+        
+        const [results] = await db.execute(query);
+
+        res.render('adatbazis', {
+            title: 'Adatbázis',
+            results: results
+        });
+
+    } catch (err) {
+        console.error('3 Táblás lekérdezés hiba:', err);
+        res.status(500).send('Szerver hiba');
+    }
 };
 
-// --- ÚJ FUNKCIÓK INNENTŐL ---
+// --- KAPCSOLAT ÉS ÜZENETEK ---
 
 // Kapcsolat űrlap megjelenítése (GET)
 exports.showKapcsolat = (req, res) => {
@@ -25,33 +51,29 @@ exports.postKapcsolat = async (req, res) => {
     try {
         const { nev, email, uzenet } = req.body;
         
-        // Adatok mentése az 'uzenetek' táblába
         await db.execute(
             'INSERT INTO uzenetek (nev, email, uzenet) VALUES (?, ?, ?)',
             [nev, email, uzenet]
         );
-
-        // Sikeres mentés után visszairányítjuk a kapcsolat oldalra
-        // Később itt egy "success=true" üzenetet is küldhetünk
+        
         res.redirect('/kapcsolat');
 
     } catch (err) {
         console.error('Kapcsolat űrlap hiba:', err);
-        res.redirect('/kapcsolat'); // Hiba esetén is vissza
+        res.redirect('/kapcsolat');
     }
 };
 
 // Üzenetek oldal megjelenítése (GET)
 exports.showUzenetek = async (req, res) => {
     try {
-        // Lekérdezzük az összes üzenetet, a legfrissebb elől 
         const [messages] = await db.execute(
             'SELECT * FROM uzenetek ORDER BY sent_at DESC'
         );
 
         res.render('uzenetek', { 
             title: 'Üzenetek',
-            messages: messages // Átadjuk az üzeneteket az EJS-nek
+            messages: messages
         });
 
     } catch (err) {
@@ -59,3 +81,6 @@ exports.showUzenetek = async (req, res) => {
         res.status(500).send('Szerver hiba');
     }
 };
+
+
+
