@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webprog 2 Beadandó - <%= title %></title>
+    
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; }
+        h1 { color: #333; }
+        nav { background-color: #ddd; padding: 10px; }
+        nav a { margin-right: 15px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>WebProgramozás 2 Beadandó</h1>
+        
+        <nav>
+            <a href="/">Főoldal</a>
+            <a href="/adatbazis">Adatbázis</a>
+            <a href="/kapcsolat">Kapcsolat</a>
+            
+            <% if (typeof user !== 'undefined' && user) { %>
+                <a href="/uzenetek">Üzenetek</a>
+                <a href="/crud">CRUD</a>
+                <a href="/logout">Kijelentkezés</a>
+                <span>Üdv, <%= user.nev %>!</span>
+            <% } else { %>
+                <a href="/login">Bejelentkezés</a>
+                <a href="/register">Regisztráció</a>
+            <% } %>
+
+            <% if (typeof isAdmin !== 'undefined' && isAdmin) { %>
+                <a href="/admin" style="color: red;">Admin Oldal</a>
+            <% } %>
+        </nav>
+    </header>
+
+    <main>

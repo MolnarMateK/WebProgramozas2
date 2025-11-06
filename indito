@@ -27,11 +27,14 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/', (req, res) => {
-    res.render('index', { 
-        title: 'Főoldal' 
-    });
-});
+
+// ÚTVONALAK BEÖLTÉSE
+const pageRoutes = require('./routes/pages');
+// const authRoutes = require('./routes/auth'); // Ezt később kapcsoljuk be
+
+app.use('/', pageRoutes);
+// app.use('/', authRoutes);
+
 
 app.listen(PORT, () => {
     console.log(`Szerver elindítva a http://localhost:${PORT} címen.`);
