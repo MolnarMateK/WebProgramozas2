@@ -1,27 +1,38 @@
 <%- include('partials/header') %>
 
-<h2>Néző Módosítása (Update)</h2>
+<section>
+    <header class="main">
+        <h1>Néző Módosítása (Update)</h1>
+    </header>
 
-<form action="/crud/edit/<%= nezo.id %>" method="POST">
-    <div>
-        <label for="nev">Név:</label>
-        <input type="text" id="nev" name="nev" value="<%= nezo.nev %>" required>
-    </div>
-    <div>
-        <label for="ferfi">Férfi:</label>
-        <select id="ferfi" name="ferfi">
-            <option value="1" <%= (nezo.ferfi == 1) ? 'selected' : '' %>>Igen</option>
-            <option value="0" <%= (nezo.ferfi == 0) ? 'selected' : '' %>>Nem</option>
-        </select>
-    </div>
-    <div>
-        <label for="berletes">Bérletes:</label>
-        <select id="berletes" name="berletes">
-            <option value="1" <%= (nezo.berletes == 1) ? 'selected' : '' %>>Igen</option>
-            <option value="0" <%= (nezo.berletes == 0) ? 'selected' : '' %>>Nem</option>
-        </select>
-    </div>
-    <button type="submit">Módosítás</button>
-</form>
+    <form action="/crud/edit/<%= nezo.id %>" method="POST">
+        <div class="row gtr-uniform">
+            <div class="col-12">
+                <label for="nev">Név:</label>
+                <input type="text" id="nev" name="nev" value="<%= nezo.nev %>" required>
+            </div>
+            <div class="col-6 col-12-xsmall">
+                <label for="ferfi">Férfi:</label>
+                <select id="ferfi" name="ferfi">
+                    <option value="1" <%= (nezo.ferfi == 1) ? 'selected' : '' %>>Igen</option>
+                    <option value="0" <%= (nezo.ferfi == 0) ? 'selected' : '' %>>Nem</option>
+                </select>
+            </div>
+            <div class="col-6 col-12-xsmall">
+                <label for="berletes">Bérletes:</label>
+                <select id="berletes" name="berletes">
+                    <option value="1" <%= (nezo.berletes == 1) ? 'selected' : '' %>>Igen</option>
+                    <option value="0" <%= (nezo.berletes == 0) ? 'selected' : '' %>>Nem</option>
+                </select>
+            </div>
+            <div class="col-12">
+                <ul class="actions">
+                    <li><button type="submit" class="primary">Módosítás</button></li>
+                </ul>
+            </div>
+        </div>
+    </form>
+
+</section>
 
 <%- include('partials/footer') %>

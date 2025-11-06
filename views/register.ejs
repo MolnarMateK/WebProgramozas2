@@ -1,21 +1,32 @@
 <%- include('partials/header') %>
 
-<h2>Regisztráció</h2>
+<section>
+    <header class="main">
+        <h1><%= title %></h1>
+    </header>
 
-<form action="/register" method="POST">
-    <div>
-        <label for="nev">Név:</label>
-        <input type="text" id="nev" name="nev" required>
-    </div>
-    <div>
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" required>
-    </div>
-    <div>
-        <label for="password">Jelszó:</label>
-        <input type="password" id="password" name="password" required>
-    </div>
-    <button type="submit">Regisztráció</button>
-</form>
+    <form action="/register" method="POST">
+        <div class="row gtr-uniform">
+            <div class="col-6 col-12-xsmall">
+                <label for="nev">Név:</label>
+                <input type="text" id="nev" name="nev" required>
+            </div>
+            <div class="col-6 col-12-xsmall">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="col-12">
+                <label for="password">Jelszó:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="col-12">
+                <ul class="actions">
+                    <li><button type="submit" class="primary">Regisztráció</button></li>
+                </ul>
+            </div>
+        </div>
+    </form>
+
+</section>
 
 <%- include('partials/footer') %>

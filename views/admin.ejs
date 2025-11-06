@@ -1,14 +1,18 @@
 <%- include('partials/header') %>
 
-<h2>Adminisztrációs Felület</h2>
-<p style="color: red; font-weight: bold;">
-    Üdvözlünk az admin oldalon! Ezt az oldalt csak 'admin' szerepkörrel lehet elérni.
-</p>
+<section>
+    <header class="main">
+        <h1><%= title %></h1>
+    </header>
 
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-    Praesent aliquam lacus sed quam finibus, sit amet commodo 
-    nulla viverra.
-</p>
+    <p style="color: #f56a6a; font-weight: bold;">
+        Üdvözlünk az admin oldalon! Ezt az oldalt csak 'admin' szerepkörrel lehet elérni.
+    </p>
+    <p>
+        Itt jelenhetnének meg speciális adminisztrációs funkciók, például 
+        felhasználók kezelése vagy globális beállítások módosítása.
+    </p>
+
+</section>
 
 <%- include('partials/footer') %>

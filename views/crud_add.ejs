@@ -1,27 +1,38 @@
 <%- include('partials/header') %>
 
-<h2>Új Néző Hozzáadása (Create)</h2>
+<section>
+    <header class="main">
+        <h1>Új Néző Hozzáadása (Create)</h1>
+    </header>
 
-<form action="/crud/add" method="POST">
-    <div>
-        <label for="nev">Név:</label>
-        <input type="text" id="nev" name="nev" required>
-    </div>
-    <div>
-        <label for="ferfi">Férfi:</label>
-        <select id="ferfi" name="ferfi">
-            <option value="1">Igen</option>
-            <option value="0">Nem</option>
-        </select>
-    </div>
-    <div>
-        <label for="berletes">Bérletes:</label>
-        <select id="berletes" name="berletes">
-            <option value="1">Igen</option>
-            <option value="0">Nem</option>
-        </select>
-    </div>
-    <button type="submit">Hozzáadás</button>
-</form>
+    <form action="/crud/add" method="POST">
+        <div class="row gtr-uniform">
+            <div class="col-12">
+                <label for="nev">Név:</label>
+                <input type="text" id="nev" name="nev" required>
+            </div>
+            <div class="col-6 col-12-xsmall">
+                <label for="ferfi">Férfi:</label>
+                <select id="ferfi" name="ferfi">
+                    <option value="1">Igen</option>
+                    <option value="0">Nem</option>
+                </select>
+            </div>
+            <div class="col-6 col-12-xsmall">
+                <label for="berletes">Bérletes:</label>
+                <select id="berletes" name="berletes">
+                    <option value="1">Igen</option>
+                    <option value="0">Nem</option>
+                </select>
+            </div>
+            <div class="col-12">
+                <ul class="actions">
+                    <li><button type="submit" class="primary">Hozzáadás</button></li>
+                </ul>
+            </div>
+        </div>
+    </form>
+
+</section>
 
 <%- include('partials/footer') %>

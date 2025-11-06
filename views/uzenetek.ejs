@@ -1,39 +1,41 @@
 <%- include('partials/header') %>
 
-<h2>Beérkezett Üzenetek</h2>
-<p>Itt láthatók az adatbázisból kiolvasott, kapcsolat űrlapon küldött üzenetek.</p>
+<section>
+    <header class="main">
+        <h1><%= title %></h1>
+    </header>
 
-<style>
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
-    th { background-color: #f2f2f2; }
-</style>
-
-<table>
-    <thead>
-        <tr>
-            <th>Dátum</th>
-            <th>Név</th>
-            <th>E-mail</th>
-            <th>Üzenet</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% if (messages.length > 0) { %>
-            <% messages.forEach(message => { %>
+    <p>Itt láthatók az adatbázisból kiolvasott, kapcsolat űrlapon küldött üzenetek.</p>
+    
+    <div class="table-wrapper">
+        <table>
+            <thead>
                 <tr>
-                    <td><%= new Date(message.sent_at).toLocaleString('hu-HU') %></td>
-                    <td><%= message.nev %></td>
-                    <td><%= message.email %></td>
-                    <td><%= message.uzenet %></td>
+                    <th>Dátum</th>
+                    <th>Név</th>
+                    <th>E-mail</th>
+                    <th>Üzenet</th>
                 </tr>
-            <% }) %>
-        <% } else { %>
-            <tr>
-                <td colspan="4">Nincsenek megjeleníthető üzenetek.</td>
-            </tr>
-        <% } %>
-    </tbody>
-</table>
+            </thead>
+            <tbody>
+                <% if (messages.length > 0) { %>
+                    <% messages.forEach(message => { %>
+                        <tr>
+                            <td><%= new Date(message.sent_at).toLocaleString('hu-HU') %></td>
+                            <td><%= message.nev %></td>
+                            <td><%= message.email %></td>
+                            <td><%= message.uzenet %></td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="4">Nincsenek megjeleníthető üzenetek.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+</section>
 
 <%- include('partials/footer') %>

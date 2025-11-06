@@ -1,22 +1,34 @@
 <%- include('partials/header') %>
 
-<h2>Kapcsolat</h2>
-<p>Küldjön nekünk üzenetet az alábbi űrlap segítségével!</p>
+<section>
+    <header class="main">
+        <h1><%= title %></h1>
+    </header>
 
-<form action="/kapcsolat" method="POST">
-    <div>
-        <label for="nev">Név:</label>
-        <input type="text" id="nev" name="nev" required>
-    </div>
-    <div>
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" required>
-    </div>
-    <div>
-        <label for="uzenet">Üzenet:</label>
-        <textarea id="uzenet" name="uzenet" rows="5" required></textarea>
-    </div>
-    <button type="submit">Küldés</button>
-</form>
+    <p>Küldjön nekünk üzenetet az alábbi űrlap segítségével!</p>
+    
+    <form action="/kapcsolat" method="POST">
+        <div class="row gtr-uniform">
+            <div class="col-6 col-12-xsmall">
+                <label for="nev">Név:</label>
+                <input type="text" id="nev" name="nev" required>
+            </div>
+            <div class="col-6 col-12-xsmall">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="col-12">
+                <label for="uzenet">Üzenet:</label>
+                <textarea id="uzenet" name="uzenet" rows="5" required></textarea>
+            </div>
+            <div class="col-12">
+                <ul class="actions">
+                    <li><button type="submit" class="primary">Küldés</button></li>
+                </ul>
+            </div>
+        </div>
+    </form>
+
+</section>
 
 <%- include('partials/footer') %>

@@ -1,8 +1,39 @@
-</main>
-    
-    <footer>
-        <p>MolnarMateK & Dalgrya - Webprogramozás 2 Beadandó</p>
-    </footer>
+</div>
+            </div> <div id="sidebar">
+                <div class="inner">
+                    <nav id="menu">
+                        <header class="major">
+                            <h2>Menü</h2>
+                        </header>
+                        <ul>
+                            <li><a href="/">Főoldal</a></li>
+                            <li><a href="/adatbazis">Adatbázis (3 Tábla)</a></li>
+                            <li><a href="/kapcsolat">Kapcsolat</a></li>
 
-    </body>
+                            <% if (typeof user !== 'undefined' && user) { %>
+                                <li><a href="/uzenetek">Üzenetek (Védett)</a></li>
+                                <li><a href="/crud">Nézők Kezelése (CRUD)</a></li>
+
+                                <% if (typeof isAdmin !== 'undefined' && isAdmin) { %>
+                                    <li><a href="/admin" style="color: #f56a6a;">Admin Oldal</a></li>
+                                <% } %>
+
+                                <li><a href="/logout">Kijelentkezés</a></li>
+                            <% } else { %>
+                                <li><a href="/login">Bejelentkezés</a></li>
+                                <li><a href="/register">Regisztráció</a></li>
+                            <% } %>
+                        </ul>
+                    </nav>
+
+                    <footer id="footer">
+                        <p class="copyright">&copy; MolnarMateK & Dalgrya. <br>Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+                    </footer>
+                </div>
+            </div> </div> <script src="/js/jquery.min.js"></script>
+    <script src="/js/browser.min.js"></script>
+    <script src="/js/breakpoints.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+</body>
 </html>
